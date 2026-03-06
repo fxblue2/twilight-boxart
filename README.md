@@ -2,6 +2,8 @@
 
 A GUI tool that automatically downloads box art for your [TwilightMenu++](https://github.com/DS-Homebrew/TWiLightMenu) SD card. Point it at your SD card, hit start, and it fills in all the cover art for your ROM collection.
 
+![TwilightBoxart Demo](docs/demo.gif)
+
 ## Download
 
 Grab the latest release for your platform from the [Releases](../../releases) page:
