@@ -76,6 +76,7 @@ void crawler_init(CrawlerContext *ctx) {
     ctx->config.overwrite_existing = false;
     ctx->state = CRAWL_IDLE;
     pthread_mutex_init(&ctx->log.mutex, NULL);
+    pthread_mutex_init(&ctx->last_dl_mutex, NULL);
 }
 
 void crawler_log(CrawlerContext *ctx, const char *fmt, ...) {
@@ -730,6 +731,9 @@ static void *worker_thread(void *arg) {
 
         if (try_download_boxart_h(curl, ctx, item->rom_path, item->filename, item->target_path)) {
             __sync_fetch_and_add(&ctx->files_downloaded, 1);
+            pthread_mutex_lock(&ctx->last_dl_mutex);
+            strncpy(ctx->last_downloaded, item->target_path, MAX_PATH_LEN - 1);
+            pthread_mutex_unlock(&ctx->last_dl_mutex);
         } else {
             crawler_log(ctx, "MISS: %s", item->filename);
             __sync_fetch_and_add(&ctx->files_notfound, 1);
@@ -927,6 +931,7 @@ static void *crawler_thread(void *arg) {
     scan_directory_collect(ctx, queue, ctx->config.sd_root);
 
     int to_download = queue->count;
+    ctx->files_to_download = to_download;
     crawler_log(ctx, "Found %d ROMs, %d to download, %d skipped",
                 ctx->files_found, to_download, ctx->files_skipped);
     crawler_log(ctx, "---");

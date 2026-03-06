@@ -59,7 +59,10 @@ typedef struct {
     int           files_downloaded;
     int           files_skipped;
     int           files_notfound;
+    int           files_to_download;
     long          max_file_size;
+    char          last_downloaded[MAX_PATH_LEN];
+    pthread_mutex_t last_dl_mutex;
 } CrawlerContext;
 
 void crawler_init(CrawlerContext *ctx);
