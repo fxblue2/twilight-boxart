@@ -10,6 +10,11 @@
 #include <ctype.h>
 #include <curl/curl.h>
 
+#ifdef _WIN32
+#include <direct.h>
+#define mkdir(path, mode) _mkdir(path)
+#endif
+
 // LibRetro thumbnails base URL
 #define LIBRETRO_THUMB_URL "https://thumbnails.libretro.com"
 // GameTDB boxart (NDS/DSi)
@@ -623,8 +628,7 @@ save_image:
             char icon_path[MAX_PATH_LEN];
             snprintf(icon_path, sizeof(icon_path), "%s/%s.png", icons_dir, filename);
 
-            // Try LibRetro title screen, resize to 32x32 via sips (macOS)
-            // sips preserves better color quality than raylib for DS display
+            // Try LibRetro title screen, resize to 32x32 icon
             bool icon_saved = false;
             const char *sys_name = libretro_system_name(sys);
             if (sys_name) {
@@ -642,16 +646,11 @@ save_image:
                     MemBuffer icon_buf = {0};
                     long code = download_url_h(curl, url, &icon_buf);
                     if (code == 200 && icon_buf.size > 100) {
-                        // Save raw PNG, then resize to 32x32 with sips
-                        FILE *icon_f = fopen(icon_path, "wb");
-                        if (icon_f) {
-                            fwrite(icon_buf.data, 1, icon_buf.size, icon_f);
-                            fclose(icon_f);
-                            char cmd[2048];
-                            snprintf(cmd, sizeof(cmd),
-                                "sips -z 32 32 '%s' --out '%s' >/dev/null 2>&1",
-                                icon_path, icon_path);
-                            system(cmd);
+                        Image icon_img = LoadImageFromMemory(".png", icon_buf.data, (int)icon_buf.size);
+                        if (icon_img.data) {
+                            ImageResize(&icon_img, 32, 32);
+                            ExportImage(icon_img, icon_path);
+                            UnloadImage(icon_img);
                             icon_saved = true;
                         }
                         free(icon_buf.data);
@@ -1016,16 +1015,11 @@ static void *crawler_thread(void *arg) {
                         MemBuffer ibuf = {0};
                         long code = download_url_h(icon_curl, url, &ibuf);
                         if (code == 200 && ibuf.size > 100) {
-                            // Save raw PNG, then resize to 32x32 with sips
-                            FILE *icon_f = fopen(icon_path, "wb");
-                            if (icon_f) {
-                                fwrite(ibuf.data, 1, ibuf.size, icon_f);
-                                fclose(icon_f);
-                                char cmd[2048];
-                                snprintf(cmd, sizeof(cmd),
-                                    "sips -z 32 32 '%s' --out '%s' >/dev/null 2>&1",
-                                    icon_path, icon_path);
-                                system(cmd);
+                            Image icon_img = LoadImageFromMemory(".png", ibuf.data, (int)ibuf.size);
+                            if (icon_img.data) {
+                                ImageResize(&icon_img, 32, 32);
+                                ExportImage(icon_img, icon_path);
+                                UnloadImage(icon_img);
                                 icon_saved = true;
                             }
                             free(ibuf.data);
