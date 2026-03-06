@@ -1,3 +1,8 @@
+#ifdef _WIN32
+#define NOGDI
+#define NOUSER
+#endif
+
 #include "crawler.h"
 #include "raylib.h"
 

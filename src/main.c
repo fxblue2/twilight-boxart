@@ -1,3 +1,8 @@
+#ifdef _WIN32
+#define NOGDI
+#define NOUSER
+#endif
+
 #include "crawler.h"
 #include "raylib.h"
 
@@ -9,6 +14,8 @@
 #include <sys/stat.h>
 
 #ifdef _WIN32
+#undef near
+#undef far
 #include <windows.h>
 #include <shlobj.h>
 #endif
@@ -600,9 +607,6 @@ int main(void) {
             system("osascript -e 'display notification \"Box art download complete!\" with title \"TwilightBoxart\"' &");
 #elif defined(__linux__)
             system("notify-send 'TwilightBoxart' 'Box art download complete!' 2>/dev/null &");
-#elif defined(_WIN32)
-            // Windows toast not trivially available; rely on taskbar flash
-            FlashWindow(GetWindowHandle(), TRUE);
 #endif
         }
         prev_state = ctx.state;
